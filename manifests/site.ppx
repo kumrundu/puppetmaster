@@ -1,0 +1,22 @@
+#import 'classes/*'
+node "slespuppet"{
+package{ "nmap":
+	ensure => installed,
+	provider => 'zypper',
+}
+#include notify
+Exec { path => '/usr/bin:/bin:/usr/sbin:/sbin' }
+exec { 'mkdir /demo': }
+exec {'touch /demo/1 /demo/2 /demo3':}
+}
+
+
+node "upuppet"{
+package{ "nmap":
+	ensure => installed,
+}
+file { '/test':
+	source => 'puppet:///files/test',
+}
+incluse users
+}

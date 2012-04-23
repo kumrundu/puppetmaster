@@ -1,0 +1,32 @@
+node default{
+#case $operatingsystem {
+#	suse: {provider => zypper }
+#}
+
+pakage { "nmap":
+#	case $operatingsystem {
+#        SLES: {provider => zypper }
+#}
+	provider => zypper,
+        ensure => installed,
+	
+}
+
+service { "nmap":
+        ensure => running,
+}
+}
+#}
+
+
+
+
+#case $operatingsystem { 
+#                debian: { include apache::debian } 
+#                ubuntu: { include apache::debian } 
+#                default: { } 
+#        } 
+
+#include nmap
+
+#}
